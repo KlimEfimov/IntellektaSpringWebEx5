@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Message Service</title>
+</head>
+<body>
+<h1>This is Message Service!</h1>
+<form method="post" action="/main">
+    Type your message here: <input type="text" name="newMessage" /><br />
+    <button type="submit">Send</button>
+</form>
+<form method="post" action="/main/filter">
+    Here you can filter messages by username. Type username here: <input type="text" name="filter" /><br />
+    <button type="submit">Filter</button>
+</form>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Text</th>
+        <th>Sender</th>
+    </tr>
+    <tr th:each="s: ${messages}">
+        <td th:text="${s.id}"></td>
+        <td th:text="${s.text}"></td>
+        <td th:text="${s.tag}"></td>
+    </tr>
+</table>
+
+<p th:text="${message}"></p>
+</body>
+</html>
